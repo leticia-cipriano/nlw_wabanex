@@ -1,0 +1,39 @@
+version: '3'
+services:
+  # wabanex:
+  #   container_name: wabanex
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile
+  #   volumes:
+  #     - .:/app
+  #   ports:
+  #     - "4001:4000"
+  #   restart: always
+  #   networks:
+  #     wabanex_network:
+  #       ipv4_address: 172.40.1.1
+  #   depends_on:
+  #     - postgres
+
+  postgres:
+    container_name: wabanex-postgres
+    image: postgres:9.6.3
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - "./data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5444:5432"
+    networks:
+      wabanex_network:
+        ipv4_address: 172.40.1.2
+
+networks:
+  wabanex_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.40.0.0/16
