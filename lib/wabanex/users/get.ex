@@ -9,6 +9,7 @@ defmodule Wabanex.Users.Get do
   end
 
   defp handle_response(:error), do: {:erro, "Invalid ID"}
+
   defp handle_response({:ok, uuid}) do
     case Repo.get(User, uuid) do
       nil -> {:error, "User not found"}

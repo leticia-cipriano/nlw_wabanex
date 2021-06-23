@@ -1,16 +1,18 @@
 defmodule Wabanex.User do
-  use Ecto.Schema # injeta código de um módulo, importa macro e qqr tipo de código
+  # injeta código de um módulo, importa macro e qqr tipo de código
+  use Ecto.Schema
 
-  import Ecto.Changeset # importa funções
+  # importa funções
+  import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
   @fields [:name, :email, :password]
 
   schema "users" do
-    field :name, :string
-    field :email, :string
-    field :password, :string
+    field :name, :string, null: false
+    field :email, :string, null: false
+    field :password, :string, null: false
 
     timestamps()
   end
