@@ -2,6 +2,7 @@ defmodule Wabanex.User do
   # injeta código de um módulo, importa macro e qqr tipo de código
   use Ecto.Schema
 
+  alias Wabanex.Training
   # importa funções
   import Ecto.Changeset
 
@@ -13,6 +14,8 @@ defmodule Wabanex.User do
     field :name, :string, null: false
     field :email, :string, null: false
     field :password, :string, null: false
+
+    has_one :training, Training
 
     timestamps()
   end
