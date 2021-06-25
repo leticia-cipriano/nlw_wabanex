@@ -1,8 +1,6 @@
 defmodule WabanexWeb.Schema.Types.Training do
   use Absinthe.Schema.Notation
 
-  import_types WabanexWeb.Schema.Types.Exercise
-
   @desc "Logic training representation"
   object :training do
     field :id, non_null(:uuid4)

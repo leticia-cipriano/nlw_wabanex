@@ -2,7 +2,7 @@ defmodule WabanexWeb.Schema.Types.Root do
   use Absinthe.Schema.Notation
 
   alias WabanexWeb.Resolvers.User, as: UserResolver
-  alias WabanexWeb.Resolvers.Trainig, as: TrainigResolver
+  alias WabanexWeb.Resolvers.Training, as: TrainingResolver
   alias Crudry.Middlewares.TranslateErrors
 
   alias WabanexWeb.Schema.Types
@@ -10,6 +10,7 @@ defmodule WabanexWeb.Schema.Types.Root do
   import_types Types.Custom.UUID4
   import_types Types.User
   import_types Types.Training
+  import_types Types.Exercise
 
   object :root_query do
     field :get_user, type: :user do #get_user é o nome da rota
@@ -30,7 +31,7 @@ defmodule WabanexWeb.Schema.Types.Root do
     field :create_training, type: :training do
       arg :input, non_null(:create_training_input)
 
-      resolve &TrainigResolver.create/2
+      resolve &TrainingResolver.create/2
       middleware TranslateErrors
     end
   end
